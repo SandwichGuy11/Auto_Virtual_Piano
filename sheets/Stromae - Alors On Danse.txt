@@ -1,0 +1,68 @@
+3 6 0|0|0
+8 q 7|7 7
+[30] [6e] [0u]|[0u]|[0u]
+[8t] [qi] [7r]|[7a] a7
+[3ups] 6 [0s] s 0|[0s]
+8 sq d7 a 7 7a
+[3ups] 6 [0s] s 0|[0s]
+8 sq d7 asa7a [7a]a
+3 6s [0s] s [0s] s [0s]s8 sqs [7d] a 7aa[7a] s3 6s [0s] s [0s] ss0s8 qs [7d] a [7a] a7as3 6s [0s] s [0s] s [0s]s8 sqs [7d] a 7aa[7a] s3 6s [0s] s [0s] ss0s[8s] qs [5s] a [5a] a[5a] p3 6t [0t] t 0 tt0t8 eqt [7t] rr7r [7r] t3 6t [0t] t 0 tt0t8 qt [7t] rr7r [7r] t3 6t [0t] t [0t] tt0t3|3 y [3r]r [3r] rt3 t6t 0t 0 t [0t]
+[8t] [qt]t y r a a|
+[3ups] 6 0 [6s] [0s] 6 0 [6s]
+[8ip] [qs] 8dq [O7ua] [0r] [3r] 0
+[3ups] 6 0 [6s] [0ups] 6 0 [6s]
+[8ip] [qs] 8dq [7rip] [0a] [3a] 0
+[3ups] 6 0 [6s] [0s] 6 0 [6s]
+[8ip] [qs] 8dq [O7ua] [0r] [3r] 0
+[3ups] 6 0 [6s] [0ups] 6 0 [6s]
+[8ip] [qs] 8dq [7rip] [0a] [3a] 0
+[6p] s[6s] s [6s] s[6s] s
+[6s] s[6s] s [6a] a [6a]a s|
+tt t t e tt t
+[ts] [ts][yd] [ra] [ra] r e
+[3e] 6s [0s] s 0ss [0s]
+[8s] qs [7d] a [7a]a 7a
+[3s] s6ss0f [0s] ss0s8 pqss5d 5 a[5a] s3 [6s]ss0s 0sss0s8 sqss7d [7a] a[7a] s3 s6[us] [0s] [pf] [0f] f [0f]
+[8f] [qs]s [5s] a 5aa5
+[6s] 6[pj] 6 [18f] 1s [1g]
+[29] g2 [2d] 7 7 72
+6 6[pj] 6 [18f] 1s [1d]
+7 d7 [7a] 7 a7a72
+[6s] 6[pj] 6 [18f] 1s [1g]
+[29] g2 [2d] 7 7 72
+6 6[pj] 6 [18f] 1s [1d]
+7 d7 [7a] 7 a7a72
+[6s]|6 s [6s]|6 s
+6 s 6d [6a]|6 a
+[6s]|6 s [6s]|6 s
+6 s 6d [6p] a [6a]|
+[6s]|6 s [6s]|6 s
+6 s 6d [6a]|6 a
+6 s s s s s s ss||
+a a|
+[3ups] 6 0 [6s] [0s] 6 0 [6s]
+[8ip] [qs] 8dq [O7ua] [0r] [3r] 0
+[3s] 6 0 [6s] [0ups] 6 0 [6s]
+[8ip] [qs] 8dq [7rip] [0a] [3a] 0
+[3ups] 6 0 [6s] [0s] 6 0 [6s]
+[8ip] [qs] 8dq [O7ua] [0r] [3r] 0
+[3s] 6 0 [6s] [0ups] 6 0 [6s]
+s s d|s s s
+[3upsf] 6 [0s] s 0|[0s]
+8 sq d7 a 7 7a
+[3ups] 6 [0s] s 0|[0s]
+8 sq d7 p [7d] d7d
+[3upsf] 6 [0s] s 0|[0s]
+8 sq d7 a 7 7a
+[3ups] 6 [0s] s 0|[0s]
+[8s] sq d7 p a a a
+[3upsf] 6 0 [6s] [0s] 6 0 [6s]
+[8ip] [qs] 8dq [O7ua] 0 3 [0a]
+[3ups] 6 0 [6s] [0ups] 6 0 [6s]
+[8ip] [qs] 8dq [7p] [0d] [3d] [0d]
+[3upsf] 6 0 [6s] [0s] 6 0 [6s]
+[8ip] [qs] 8dq [O7ua] 0 3 [0a]
+[3ups] 6 0 [6s] [0ups] 6 0 [6s]
+[8ips] [qs] 8dq [7up] [0a] [3a] [0a]
+3 p6 0|0|0
+8 q 7
