@@ -1,6 +1,10 @@
 
 def parse_sheet(sheet_dir: str):
-    """Returns a list of individual notes/note groups for iteration."""
+    """Returns a list of individual notes/note groups for iteration.
+
+    Returns:
+        list: A list of individual notes or note groups.
+    """
     try:
         with open(file=sheet_dir, mode="r") as file:
             contents = file.read()
