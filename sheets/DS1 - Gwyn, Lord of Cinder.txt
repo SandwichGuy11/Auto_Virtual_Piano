@@ -1,0 +1,74 @@
+6 0 [xtife] r [ztid] r
+[pj6] 0 [tie] r [ti] r
+[ti6] [r0] [xtife] r [ztid] r
+[vh6] 0 [tie] r [tigc] r
+[xf6] 0 [yoe] t [yo] t
+[yo6] [t0] [yoe] t [yo] t
+[yo6] [t0] [yoe] t [yo] t
+[yo6] [t0] [yoe] t [yo] t
+[ti6] [r0] [xtife] r [ztid] r
+[pj6] 0 [tie] r [ti] r
+[ti6] [r0] [xtife] r [ztid] r
+[vh6] 0 [tie] r [tigc] r
+[xf6] 0 [yoe] t [yo] t
+[yo6] [t0] [yoe] t [yo] t
+[xf6] 0 [upe] y [up] y
+[up6] [y0] [upe] y [upj] y
+[xf6] 0 [iea] u [ia] u
+[xf6] 0 [igeca] u [viha] u
+[xfd6] 0 [ied] u [id] u
+[s6] 0 [zsied] u [sli] u
+[ka6] 0 [iea] u [ia] u
+[a6] 0 [iea] u [si] u
+[d6] 0 [ied] u [id] u
+[f6] 0 [ife] u [pjif] u
+[xf6] 0 [ife] u [if] u
+[xf6] 0 [igfec] u [vih] u
+[xfd6] 0 [ied] u [id] u
+[a6] 0 [igeca] u [viha] u
+[jb6] 0 [sie] u [si] u
+[jb6] 0 [vsihe] u [sigc] u
+[xf6] 0 [iea] u [ia] u
+[ti6] [r0] [xtie] r [zti] r
+[j6] 0 [tie] r [ti] r
+[yo6] [t0] [yxoe] t [zyo] t
+[v6] 0 [yoe] t [yoc] t
+[x6] 0 [tie] r [ti] r
+[ti6] [r0] [tie] r [ti] r
+[x6] 0 [yoe] t [yo] t
+[yo6] [t0] [yoe] t [yo] t
+[a30] w r t r w
+[ka0] w r t r w
+[sl0] w r t r w
+[zd0] w r t r w
+[yia92] q e r e q
+[ka9] q e r e q
+[slg9] q e r e q
+[zjgd9] q e [xrjgf] e q
+[uoa30] w r t r w
+[ka0] w r t r w
+[utso0] w r t r w
+[yuod0] w r t r w
+[yia92] q e r e q
+[ka9] q e r e q
+[slg9] q e r e q
+[zjgd9] q [xjgfe] r [zjged] [sqljg]
+[pea60]|[pa]|[pa]|
+[pa]|[pa]|[pa]|
+[rpa]|[rpa]|[rpa]|
+[rpa]|[rpa]|[rpa]|
+[trpa]|[trpa]|[trpa]|
+[trpa]|[trpa]|[trpa]|
+[trpa]|[trpa]|[trpa]|
+[trpa]|[trpa]|[pea]|
+[xf6] 0 e r t|
+[yxufa]|[gc]|[vh]|
+[xf6] 0 e r t|
+[yua]|[zyupd]|[sl]|
+[zd6] 0 [xfe] r [tka]|[yua]||
+[yua6] 0 e r t|
+[yua]|[yus]|[yuohd]|
+[xf5] 9 w e r|
+[yxtsf]|[ytgca]|[yvtph]|
+[xf5] 9 [wp] e [ra]|
+[yts]|[ytgca]|[yvtph]|[jb]

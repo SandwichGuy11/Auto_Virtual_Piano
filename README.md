@@ -1,4 +1,4 @@
 # Auto Virtual Piano
-This program is for programs similar to Virtual Piano.
+This program is for autoplaying notes in the Virtual Piano website, or similar piano apps.
 
-Description here
+This program takes a sheet (txt file) and allows the user to iterate through the notes and play it after pressing the assigned key.
