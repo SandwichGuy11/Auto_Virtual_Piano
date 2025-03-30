@@ -29,7 +29,7 @@ class AutoPiano:
             chosen_num = int(input("\nEnter a number: ")) - 1
             sheet_dir = self.SHEET_PATHS[chosen_num]
             local_title = self.sheets_list[chosen_num]
-            local_sheet = functions.parse_sheet(sheet_dir)
+            local_sheet = functions.manual_parse(sheet_dir)
 
             print(f"Chosen sheet: {local_title}")
             print(f"Notes: {len(local_sheet)}")
@@ -41,14 +41,21 @@ class AutoPiano:
         except IndexError:
             print("Error: enter a valid range!")
 
-    def listen_for_keys(self):
+    def manual_play(self):
+        """Listens for key presses and plays a note on key press."""
+        print("Press '[' or ']' to play a note\nPress 'ESC' to quit")
         if self.sheet:
-            keyboard.on_press_key(',', lambda event: functions.on_key_press(self.sheet))
-            keyboard.on_press_key('.', lambda event: functions.on_key_press(self.sheet))
+            keyboard.on_press_key('[', lambda event: functions.on_key_press(self.sheet))
+            keyboard.on_press_key(']', lambda event: functions.on_key_press(self.sheet))
+
+            # Continue listening unless key is pressed
             keyboard.wait("esc")
-        print("No notes left. exiting.")
+        print("Exiting..")
+
+    def auto_play(self):
+        """Autoplayer"""
 
 
 if __name__ == "__main__":
     ap = AutoPiano("sheets")
-    ap.listen_for_keys()
+    ap.manual_play()
