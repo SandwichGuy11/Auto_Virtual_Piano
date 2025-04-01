@@ -10,31 +10,31 @@ class AutoPiano:
         # Sheet File Paths
         self.SHEET_PATHS = sorted(glob.glob(f"{sheet_path}/*"))
         self.sheets_list = [Path(path).stem for path in self.SHEET_PATHS]
-        self.title, self.sheet = self.pick_sheet()
+        self.title, self.sheet = self._pick_sheet()
+        self.sheet = functions.manual_parse(self.sheet)
 
-    def pick_sheet(self):
+    def _pick_sheet(self):
         """Display sheets and allows the user to pick one.
 
         Returns:
-             list: A list of notes/ note groups
+             str: Title of the sheet.
+             str: Directory of the sheet.
          """
 
         # Display Sheets in Directory
         print("---------- SHEETS LIST ----------")
-        for index, title in enumerate(self.sheets_list):
-            print(f"{index + 1}. {title}")
+        for index, name in enumerate(self.sheets_list):
+            print(f"{index + 1}. {name}")
 
         try:
             # Ask for index and get directory
             chosen_num = int(input("\nEnter a number: ")) - 1
             sheet_dir = self.SHEET_PATHS[chosen_num]
-            local_title = self.sheets_list[chosen_num]
-            local_sheet = functions.manual_parse(sheet_dir)
+            l_title = self.sheets_list[chosen_num]
 
-            print(f"Chosen sheet: {local_title}")
-            print(f"Notes: {len(local_sheet)}")
+            print(f"Chosen sheet: {l_title}")
 
-            return local_title, local_sheet
+            return l_title, sheet_dir
 
         except ValueError:
             print("Error: enter a valid number!")
@@ -43,17 +43,19 @@ class AutoPiano:
 
     def manual_play(self):
         """Listens for key presses and plays a note on key press."""
+        note_list = self.sheet
+
         print("Press '[' or ']' to play a note\nPress 'ESC' to quit")
-        if self.sheet:
-            keyboard.on_press_key('[', lambda event: functions.on_key_press(self.sheet))
-            keyboard.on_press_key(']', lambda event: functions.on_key_press(self.sheet))
+        if note_list:
+            keyboard.on_press_key('[', lambda event: functions.on_key_press(note_list))
+            keyboard.on_press_key(']', lambda event: functions.on_key_press(note_list))
 
             # Continue listening unless key is pressed
             keyboard.wait("esc")
         print("Exiting..")
 
     def auto_play(self):
-        """Autoplayer"""
+        pass
 
 
 if __name__ == "__main__":

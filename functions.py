@@ -1,8 +1,15 @@
-
 import keyboard
 
-PLAY_NOTE_1 = ","
-PLAY_NOTE_2 = "."
+CONVERSION_CASES = {'!': '1',
+                    '@': '2',
+                    '£': '3',
+                    '$': '4',
+                    '%': '5',
+                    '^': '6',
+                    '&': '7',
+                    '*': '8',
+                    '(': '9',
+                    ')': '0'}
 
 
 def autoplay_parse(sheet_dir: str):
@@ -11,19 +18,13 @@ def autoplay_parse(sheet_dir: str):
         """
     try:
         with open(file=sheet_dir, mode="r") as file:
-            translate_tbl = str.maketrans({"|": "",
-                                           "\n": "",
-                                           " ": "",
-                                           })
-
             contents = file.read()  # file contents as str
-            contents = [grp.translate(translate_tbl) for grp in contents]
-            contents = ''.join(contents)  # str
 
             notes_list = []
             current_chord = ""
             in_chord = False
 
+            # Remove brackets in chords
             for char in contents:
                 if char == "[":
                     in_chord = True
@@ -52,12 +53,12 @@ def manual_parse(sheet_dir: str):
     """
     try:
         with open(file=sheet_dir, mode="r") as file:
+            contents = file.read()  # file contents as str
             translate_tbl = str.maketrans({"|": "",
                                            "\n": "",
                                            " ": "",
                                            })
 
-            contents = file.read()  # file contents as str
             contents = [grp.translate(translate_tbl) for grp in contents]
             contents = ''.join(contents)  # str
 
@@ -108,20 +109,10 @@ def is_shifted(char: str):
 
 
 def play_note(note: str):
-    conversion_cases = {'!': '1',
-                        '@': '2',
-                        '£': '3',
-                        '$': '4',
-                        '%': '5',
-                        '^': '6',
-                        '&': '7',
-                        '*': '8',
-                        '(': '9',
-                        ')': '0'}
     note = note
     if is_shifted(note):
-        if note in conversion_cases:
-            note = f"shift+{conversion_cases[note]}"  # convert to symbol to number
+        if note in CONVERSION_CASES:
+            note = f"shift+{CONVERSION_CASES[note]}"  # convert to symbol to number
         note = f"shift+{note.lower()}"
 
     keyboard.press(note)
@@ -140,5 +131,10 @@ def on_key_press(sheet: list):
     sheet.pop(0)
 
 
+def auto_play():
+    pass
+
+
 if __name__ == "__main__":
-    print(manual_parse("sheets/AOT - YouSeeBIGGIRLTT.txt"))
+    # print(manual_parse("sheets/AOT - YouSeeBIGGIRLTT.txt"))
+    print(autoplay_parse("sheets/Parasyte - Human.txt"))
