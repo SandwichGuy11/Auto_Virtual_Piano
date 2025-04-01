@@ -11,7 +11,6 @@ class AutoPiano:
         self.SHEET_PATHS = sorted(glob.glob(f"{sheet_path}/*"))
         self.sheets_list = [Path(path).stem for path in self.SHEET_PATHS]
         self.title, self.sheet = self._pick_sheet()
-        self.sheet = functions.manual_parse(self.sheet)
 
     def _pick_sheet(self):
         """Display sheets and allows the user to pick one.
@@ -40,10 +39,12 @@ class AutoPiano:
             print("Error: enter a valid number!")
         except IndexError:
             print("Error: enter a valid range!")
+        except TypeError:
+            print("Error: Enter a valid number!")
 
     def manual_play(self):
         """Listens for key presses and plays a note on key press."""
-        note_list = self.sheet
+        note_list = functions.parse_sheet(self.sheet, manual=True)
 
         print("Press '[' or ']' to play a note\nPress 'ESC' to quit")
         if note_list:
@@ -55,9 +56,16 @@ class AutoPiano:
         print("Exiting..")
 
     def auto_play(self):
-        pass
+        notes_list = functions.parse_sheet(self.sheet, manual=False)
+        bpm = int(input("Enter a bpm for the song: "))
+
+        print("\nPress ctrl+c to start playing\nPress F6 to stop playing")
+        # Start
+        keyboard.wait("ctrl+c")
+        functions.auto_play(notes_list, bpm)
+        print("Sheet finished.")
 
 
 if __name__ == "__main__":
     ap = AutoPiano("sheets")
-    ap.manual_play()
+    ap.auto_play()

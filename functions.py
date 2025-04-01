@@ -1,4 +1,5 @@
 import keyboard
+import time
 
 CONVERSION_CASES = {'!': '1',
                     '@': '2',
@@ -12,73 +13,42 @@ CONVERSION_CASES = {'!': '1',
                     ')': '0'}
 
 
-def autoplay_parse(sheet_dir: str):
+def parse_sheet(sheet_dir: str, manual: bool):
     """Returns a list of individual notes/note groups for automatic iteration.
         :param sheet_dir: Directory of the txt file to parse.
+        :param manual: Use a different parsing method for manual playing.
         """
     try:
         with open(file=sheet_dir, mode="r") as file:
             contents = file.read()  # file contents as str
 
-            notes_list = []
-            current_chord = ""
-            in_chord = False
-
-            # Remove brackets in chords
-            for char in contents:
-                if char == "[":
-                    in_chord = True
-                elif char == "]":
-                    in_chord = False
-                    notes_list.append(current_chord)  # add chord to sheet
-                    current_chord = ""  # clear chord variable
-                elif in_chord:
-                    current_chord += char
-                else:
-                    notes_list.append(char)
-
-            return notes_list
-
-    # Catch wrong file types
-    except PermissionError as e:
-        print(f"{e}: Please input a txt file")
-    # Catch invalid file
-    except FileNotFoundError as e:
-        print(f"{e}: The specified file was not found.")
-
-
-def manual_parse(sheet_dir: str):
-    """Returns a list of individual notes/note groups for manual iteration.
-    :param sheet_dir: Directory of the txt file to parse.
-    """
-    try:
-        with open(file=sheet_dir, mode="r") as file:
-            contents = file.read()  # file contents as str
+        if manual:
             translate_tbl = str.maketrans({"|": "",
                                            "\n": "",
                                            " ": "",
                                            })
-
             contents = [grp.translate(translate_tbl) for grp in contents]
-            contents = ''.join(contents)  # str
+            contents = ''.join(contents)
 
-            notes_list = []
-            current_chord = ""
-            in_chord = False
+        notes_list = []
 
-            for char in contents:
-                if char == "[":
-                    in_chord = True
-                elif char == "]":
-                    in_chord = False
-                    notes_list.append(current_chord)  # add chord to sheet
-                    current_chord = ""  # clear chord variable
-                elif in_chord:
-                    current_chord += char
-                else:
-                    notes_list.append(char)
+        current_chord = ""
+        in_chord = False
 
-            return notes_list
+        # Remove brackets in chords
+        for char in contents:
+            if char == "[":
+                in_chord = True
+            elif char == "]":
+                in_chord = False
+                notes_list.append(current_chord)  # add chord to sheet
+                current_chord = ""  # clear chord variable
+            elif in_chord:
+                current_chord += char
+            else:
+                notes_list.append(char)
+
+        return notes_list
 
     # Catch wrong file types
     except PermissionError as e:
@@ -94,9 +64,6 @@ def is_note_group(note: str):
 
 def is_shifted(char: str):
     """Checks if a character requires the Shift key to be pressed to be typed with a keyboard.
-
-    It checks if the given character is an uppercase letter or a special
-    character that is accessed by holding down the Shift key.
 
     :param char: A single character (length of 1).
     :return: bool: True if the character requires the Shift key, False otherwise.
@@ -131,10 +98,28 @@ def on_key_press(sheet: list):
     sheet.pop(0)
 
 
-def auto_play():
-    pass
+def auto_play(sheet, bpm):
+    interval = (60 / bpm) * 0.23
+    space_interval = (60 / bpm) * 0.03
+    rest_interval = (60 / bpm) * 0.25
+
+    for note in sheet:
+        print(note)
+
+        if keyboard.is_pressed("F6"):
+            break
+
+        if note == " ":
+            time.sleep(space_interval)
+        elif note == "|":
+            time.sleep(rest_interval)
+        elif is_note_group(note):
+            for nt in note:
+                play_note(nt)
+        else:
+            play_note(note)
+        time.sleep(interval)
 
 
 if __name__ == "__main__":
-    # print(manual_parse("sheets/AOT - YouSeeBIGGIRLTT.txt"))
-    print(autoplay_parse("sheets/Parasyte - Human.txt"))
+    print(parse_sheet("sheets/AOT - YouSeeBIGGIRLTT.txt", manual=False))
