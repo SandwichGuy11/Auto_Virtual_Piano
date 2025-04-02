@@ -7,6 +7,9 @@ import keyboard
 class AutoPiano:
 
     def __init__(self, sheet_path: str):
+        """Auto Piano Class. Takes a directory of txt files (sheets)
+        :param sheet_path: Directory of txt files.
+        """
         self.SHEET_PATHS = sorted(glob.glob(f"{sheet_path}/*"))
         self.sheets_list = [Path(path).stem for path in self.SHEET_PATHS]
         self.title, self.sheet = self._pick_sheet()
@@ -83,7 +86,7 @@ class AutoPiano:
 
 
 if __name__ == "__main__":
-    ap = AutoPiano("sheets")
+    ap = AutoPiano(sheet_path="sheets")
 
     while True:
         inp = input("\nEnter 'auto' for auto-play. Enter 'manual' for manual play: ")
