@@ -7,18 +7,19 @@ import keyboard
 class AutoPiano:
 
     def __init__(self, sheet_path: str):
-        # Sheet File Paths
         self.SHEET_PATHS = sorted(glob.glob(f"{sheet_path}/*"))
         self.sheets_list = [Path(path).stem for path in self.SHEET_PATHS]
         self.title, self.sheet = self._pick_sheet()
 
     def _pick_sheet(self):
-        """Display sheets and allows the user to pick one.
+        """Displays a list of sheets and allow the user to pick one.
 
-        Returns:
-             str: Title of the sheet.
-             str: Directory of the sheet.
-         """
+        :return: Sheet Title (str), Sheet Directory (str)
+        """
+
+        if not self.sheets_list:
+            print("No sheets found in directory. Add a valid text file or check your spelling.")
+            exit()
 
         # Display Sheets in Directory
         print("---------- SHEETS LIST ----------")
@@ -27,20 +28,27 @@ class AutoPiano:
 
         try:
             # Ask for index and get directory
-            chosen_num = int(input("\nEnter a number: ")) - 1
-            sheet_dir = self.SHEET_PATHS[chosen_num]
-            l_title = self.sheets_list[chosen_num]
+            user_input = input("\nEnter a number or enter 'quit' to exit: ")
 
-            print(f"Chosen sheet: {l_title}")
+            if user_input.lower() == "quit":
+                print("Exiting program..")
+                exit()
+            else:
+                chosen_num = int(user_input) - 1
 
-            return l_title, sheet_dir
+                sheet_dir = self.SHEET_PATHS[chosen_num]
+                l_title = self.sheets_list[chosen_num]
+
+                print(f"Chosen sheet: {l_title}")
+
+                return l_title, sheet_dir
 
         except ValueError:
-            print("Error: enter a valid number!")
+            print("Enter a valid number!")
+            exit()
         except IndexError:
-            print("Error: enter a valid range!")
-        except TypeError:
-            print("Error: Enter a valid number!")
+            print("Number not in list!")
+            exit()
 
     def manual_play(self):
         """Listens for key presses and plays a note on key press."""
@@ -53,19 +61,38 @@ class AutoPiano:
 
             # Continue listening unless key is pressed
             keyboard.wait("esc")
-        print("Exiting..")
+        print("Sheet finished.")
 
     def auto_play(self):
+        """Automatically plays a sheet on key press."""
         notes_list = functions.parse_sheet(self.sheet, manual=False)
-        bpm = int(input("Enter a bpm for the song: "))
 
-        print("\nPress ctrl+c to start playing\nPress F6 to stop playing")
+        try:
+            bpm = int(input("Enter song bpm: "))
+        except ValueError:
+            print("Enter a valid number!")
+            exit()
+
+        print("\nPress F9 to start playing\nPress F6 to stop playing")
+
         # Start
-        keyboard.wait("ctrl+c")
+        keyboard.wait("F9")
         functions.auto_play(notes_list, bpm)
         print("Sheet finished.")
+        exit()
 
 
 if __name__ == "__main__":
     ap = AutoPiano("sheets")
-    ap.auto_play()
+
+    while True:
+        inp = input("\nEnter 'auto' for auto-play. Enter 'manual' for manual play: ")
+        inp.lower()
+
+        if inp == "auto":
+            ap.auto_play()
+        elif inp == "manual":
+            ap.manual_play()
+        elif inp == "quit":
+            print("Quit Program.")
+            break

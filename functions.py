@@ -12,9 +12,14 @@ CONVERSION_CASES = {'!': '1',
                     '(': '9',
                     ')': '0'}
 
+TRANSLATE_TABLE = str.maketrans({"|": "",
+                                 "\n": "",
+                                 " ": "",
+                                 })
+
 
 def parse_sheet(sheet_dir: str, manual: bool):
-    """Returns a list of individual notes/note groups for automatic iteration.
+    """Returns a list of individual notes/note groups for iteration.
         :param sheet_dir: Directory of the txt file to parse.
         :param manual: Use a different parsing method for manual playing.
         """
@@ -23,11 +28,7 @@ def parse_sheet(sheet_dir: str, manual: bool):
             contents = file.read()  # file contents as str
 
         if manual:
-            translate_tbl = str.maketrans({"|": "",
-                                           "\n": "",
-                                           " ": "",
-                                           })
-            contents = [grp.translate(translate_tbl) for grp in contents]
+            contents = [grp.translate(TRANSLATE_TABLE) for grp in contents]
             contents = ''.join(contents)
 
         notes_list = []
@@ -52,19 +53,19 @@ def parse_sheet(sheet_dir: str, manual: bool):
 
     # Catch wrong file types
     except PermissionError as e:
-        print(f"{e}: Please input a txt file")
+        print("Please input a txt file")
     # Catch invalid file
     except FileNotFoundError as e:
-        print(f"{e}: The specified file was not found.")
+        print("The specified file was not found.")
 
 
 def is_note_group(note: str):
+    """Check if a note is more than 1 char"""
     return len(note) > 1
 
 
 def is_shifted(char: str):
     """Checks if a character requires the Shift key to be pressed to be typed with a keyboard.
-
     :param char: A single character (length of 1).
     :return: bool: True if the character requires the Shift key, False otherwise.
     """
@@ -76,6 +77,10 @@ def is_shifted(char: str):
 
 
 def play_note(note: str):
+    """Plays the given note as a keystroke.
+    :param note: The note to be played.
+    """
+
     note = note
     if is_shifted(note):
         if note in CONVERSION_CASES:
@@ -87,6 +92,9 @@ def play_note(note: str):
 
 
 def on_key_press(sheet: list):
+    """Takes a list of notes and invokes play_note to play a note.
+    :param sheet: A list of notes.
+    """
     sheet = sheet
     note = sheet[0]
     print(note)
@@ -98,10 +106,15 @@ def on_key_press(sheet: list):
     sheet.pop(0)
 
 
-def auto_play(sheet, bpm):
+def auto_play(sheet: list, bpm: int):
+    """Takes a sheet and bpm value and iterates through the sheet relative to the BPM.
+
+    :param sheet: A list of notes.
+    :param bpm: The BPM of the song.
+    """
     interval = (60 / bpm) * 0.23
     space_interval = (60 / bpm) * 0.03
-    rest_interval = (60 / bpm) * 0.25
+    rest_interval = (60 / bpm) * 0.23
 
     for note in sheet:
         print(note)
