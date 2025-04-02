@@ -16,5 +16,5 @@ You can also use [VPSHEETS](https://vpsheets.com/converter) to convert MIDI file
 
 
 ### User Manual:
-1. Put any text file in "sheets" folder
+1. Put a text file that contains a sheet in "sheets" folder
 2. Run main.py
