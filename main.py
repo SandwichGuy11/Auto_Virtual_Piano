@@ -65,6 +65,7 @@ class AutoPiano:
             # Continue listening unless key is pressed
             keyboard.wait("esc")
         print("Sheet finished.")
+        exit()
 
     def auto_play(self):
         """Automatically plays a sheet on key press."""
